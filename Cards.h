@@ -1,7 +1,27 @@
 #pragma once
+#include <string>
+
 enum class Suit{}; // this will need to be filled out
 
-enum class Rank{}; // this will need to be filled out
+enum class Rank
+{
+	Ace,      // 0
+	Two,      // 1
+	Three,    // 2
+	Four,     // 3
+	Five,     // 4
+	Six,      // 5
+	Seven,    // 6
+	Eight,    // 7
+	Nine,     // 8
+	Ten,      // 9
+	Jack,     // 10
+	Queen,    // 11
+	King,     // 12
+
+	count     // 13
+
+}; 
 
 namespace Constants {
 	constexpr int CARD_COUNT{ 52 }; // the # of cards in a deck
@@ -13,8 +33,25 @@ namespace Constants {
 	// of an enum. We can cast the enum as an int to index these arrays.
 
 	// const std::string SUITS[] {}; // initialize & match with enums
-	// const std::string RANKS[] {}; // initialize & match with enums
+	const std::string RANKS[] 
+	{
+		"Ace",
+		"Two",
+		"Three",
+		"Four",
+		"Five",
+		"Six",
+		"Seven",
+		"Eight",
+		"Nine",
+		"Ten",
+		"Jack",
+		"Queen",
+		"King"
+	};
 
 }
 
 int pickRandomCard();
+
+Rank getRank(int index);

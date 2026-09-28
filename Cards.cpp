@@ -16,6 +16,14 @@ int pickRandomCard()
 // - return: an enum representing the Rank of the card index given
 // getRank();
 
+Rank getRank(int index)
+{
+	Rank rank{ index % 13 }; // returns an int from 0-12 used to select rank
+
+	return rank;
+
+}
+
 // Get the suit of a specific card index
 // - param 1: an int representing the card index
 // - return: an enum representing the Suit of the card index given
