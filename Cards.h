@@ -16,3 +16,5 @@ namespace Constants {
 	// const std::string RANKS[] {}; // initialize & match with enums
 
 }
+
+int pickRandomCard();

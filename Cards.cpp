@@ -1,9 +1,15 @@
+#include <cstdlib>
 #include "Cards.h"
 
 // Pick a random card from the deck (represented by an int between 0-52)
 // - params: none
 // - returns: an int between 0 - 51
 // pickRandomCard();
+
+int pickRandomCard() 
+{
+	return rand() % 52;
+}
 
 // Get the rank of a specific card index
 // - param 1: an int representing the card index
