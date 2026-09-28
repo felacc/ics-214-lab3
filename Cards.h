@@ -1,7 +1,15 @@
 #pragma once
 #include <string>
 
-enum class Suit{}; // this will need to be filled out
+enum class Suit
+{
+	Spades,      // 0
+	Hearts,      // 1
+	Diamonds,    // 2
+	Clubs,       // 3
+
+	count        // 4
+}; 
 
 enum class Rank
 {
@@ -32,7 +40,14 @@ namespace Constants {
 	// We don’t need to use a switch statement to find the string representation
 	// of an enum. We can cast the enum as an int to index these arrays.
 
-	// const std::string SUITS[] {}; // initialize & match with enums
+	const std::string SUITS[] 
+	{
+		"Spades",
+		"Hearts",
+		"Diamonds",
+		"Clubs"
+	}; 
+
 	const std::string RANKS[] 
 	{
 		"Ace",
@@ -55,3 +70,5 @@ namespace Constants {
 int pickRandomCard();
 
 Rank getRank(int index);
+
+Suit getSuit(int index);

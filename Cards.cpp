@@ -29,6 +29,13 @@ Rank getRank(int index)
 // - return: an enum representing the Suit of the card index given
 // getSuit();
 
+Suit getSuit(int index)
+{
+	Suit suit{ index / 13 };// returns an int from 0-3 used to select suit
+
+	return suit;
+}
+
 // A function to assess whether all elements in a boolean array are true
 // You can use this funciton to determine whether all suits have been picked
 // - param 1: an array of boolean values (decide if it should be const or not)

@@ -11,4 +11,7 @@ int main()
 	Rank rank{ getRank(card) };
 	std::cout << "Rank: " << Constants::RANKS[static_cast<int>(rank)] << '\n';
 
+	Suit suit{ getSuit(card) };
+	std::cout << "Suit: " << Constants::SUITS[static_cast<int>(suit)] << '\n';
+
 }
