@@ -43,6 +43,19 @@ Suit getSuit(int index)
 // - return: a bool : true if ALL the elements in param 1 are true, false otherwise.
 // allArrayElementsAreTrue();
 
+bool allArrayElementsAreTrue(bool elements[], int size)
+{
+	bool allTrue = true;
+	for (int i = 0; i < size; i++)
+	{
+		if (!elements[i])
+		{
+			allTrue = false;
+		}
+	}
+	return allTrue;
+}
+
 // This is the function that does all the work behind solving the problem (including
 // sending output to the console).
 // This function should create/use an array of Boolean values (all initially false)

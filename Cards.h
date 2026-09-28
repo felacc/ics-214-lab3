@@ -72,3 +72,5 @@ int pickRandomCard();
 Rank getRank(int index);
 
 Suit getSuit(int index);
+
+bool allArrayElementsAreTrue(bool elements[], int size);

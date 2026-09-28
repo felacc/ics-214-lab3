@@ -14,4 +14,11 @@ int main()
 	Suit suit{ getSuit(card) };
 	std::cout << "Suit: " << Constants::SUITS[static_cast<int>(suit)] << '\n';
 
+	bool trueArr[] = { true, true, true, true };
+
+	bool falseArr[] = { true, false, true, true };
+
+	std::cout << "True arr: " << allArrayElementsAreTrue(trueArr, 4) << '\n';   // note: hardcoding size for convience and testing
+	std::cout << "False arr: " << allArrayElementsAreTrue(falseArr, 4) << '\n'; // note: hardcoding size for convience and testing
+
 }
