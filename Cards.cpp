@@ -5,12 +5,12 @@
 
 int pickRandomCard()
 {
-	return rand() % 52;
+	return rand() % Constants::CARD_COUNT;
 }
 
 Rank getRank(int index)
 {
-	Rank rank{ index % 13 }; // returns an int from 0-12 used to select rank
+	Rank rank{ index % static_cast<int>(Rank::count) }; // returns an int from 0-12 used to select rank
 
 	return rank;
 
@@ -19,7 +19,7 @@ Rank getRank(int index)
 
 Suit getSuit(int index)
 {
-	Suit suit{ index / 13 };// returns an int from 0-3 used to select suit
+	Suit suit{ index / static_cast<int>(Rank::count) };// returns an int from 0-3 used to select suit
 
 	return suit;
 }
@@ -44,24 +44,24 @@ int getPickCountNeededForFourSuits(bool verbose, bool replacement)
 	// if no replacement, get a shuffled array of cards
 	if (!replacement)
 	{
-		randomizedDeck = new int[52];
+		randomizedDeck = new int[Constants::CARD_COUNT];
 		// fill deck
-		for (int i = 0; i < 52; i++)
+		for (int i = 0; i < Constants::CARD_COUNT; i++)
 		{
 			randomizedDeck[i] = i;
 		}
 		// magic required for std::shuffle
 		std::random_device rd;
 		std::mt19937 g(rd());
-		std::shuffle(randomizedDeck, randomizedDeck + 52, g); // using memory addresses of array beginning and end
+		std::shuffle(randomizedDeck, randomizedDeck + Constants::CARD_COUNT, g); // using memory addresses of array beginning and end
 	}
 
-	bool suitsPicked[4]{}; // spades, hearts, diamonds, clubs
+	bool suitsPicked[static_cast<int>(Suit::count)]{}; // 0->3: spades, hearts, diamonds, clubs
 	int count{ 0 };
 	int card{};
 	Suit suit{};
 
-	while (!allArrayElementsAreTrue(suitsPicked, 4))
+	while (!allArrayElementsAreTrue(suitsPicked, static_cast<int>(Suit::count)))
 	{
 		if (!replacement)
 		{

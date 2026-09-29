@@ -33,8 +33,6 @@ enum class Rank
 
 namespace Constants {
 	constexpr int CARD_COUNT{ 52 }; // the # of cards in a deck
-	constexpr int NUM_RANKS{ 13 };  // the # of ranks in a deck (two - ace)
-	constexpr int NUM_SUITS{ 4 };   // the # of suits in a deck (hearts, clubs, etc.)
 
 	const std::string SUITS[] 
 	{
