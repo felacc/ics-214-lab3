@@ -74,3 +74,5 @@ Rank getRank(int index);
 Suit getSuit(int index);
 
 bool allArrayElementsAreTrue(bool elements[], int size);
+
+int getPickCountNeededForFourSuits(bool verbose = true);
