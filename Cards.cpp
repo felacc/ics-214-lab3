@@ -39,6 +39,8 @@ bool allArrayElementsAreTrue(bool elements[], int size)
 
 int getPickCountNeededForFourSuits(bool verbose, bool replacement)
 {
+	
+
 	int* randomizedDeck{ nullptr }; // don't initialize if never used
 
 	// if no replacement, get a shuffled array of cards
@@ -72,38 +74,12 @@ int getPickCountNeededForFourSuits(bool verbose, bool replacement)
 			card = pickRandomCard();
 		}
 		suit = getSuit(card);
+		int intSuit = static_cast<int>(suit);
 		count++;
 
-		switch (suit)
+		if (!suitsPicked[intSuit])
 		{
-		case Suit::Spades:
-			if (suitsPicked[0] == true) 
-			{
-				continue;
-			}
-			suitsPicked[0] = true;
-			break;
-		case Suit::Hearts:
-			if (suitsPicked[1] == true)
-			{
-				continue;
-			}
-			suitsPicked[1] = true;
-			break;
-		case Suit::Diamonds:
-			if (suitsPicked[2] == true)
-			{
-				continue;
-			}
-			suitsPicked[2] = true;
-			break;
-		case Suit::Clubs:
-			if (suitsPicked[3] == true)
-			{
-				continue;
-			}
-			suitsPicked[3] = true;
-			break;
+			suitsPicked[intSuit] = true;
 		}
 
 		if (verbose)
@@ -111,7 +87,7 @@ int getPickCountNeededForFourSuits(bool verbose, bool replacement)
 			Rank rank = getRank(card);
 			std::cout << Constants::RANKS[static_cast<int>(rank)]
 				<< " of "
-				<< Constants::SUITS[static_cast<int>(suit)]
+				<< Constants::SUITS[intSuit]
 				<< '\n';
 		}
 		
