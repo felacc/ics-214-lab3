@@ -99,4 +99,4 @@ bool allArrayElementsAreTrue(bool elements[], int size);
 /// When false, only print first card picked of each suit.
 /// </param>
 /// <returns>Number of cards picked before all four suits were found.</returns>
-int getPickCountNeededForFourSuits(bool verbose = true);
+int getPickCountNeededForFourSuits(bool verbose = true, bool replacement = true);

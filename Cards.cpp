@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <random>
 #include "Cards.h"
 
 int pickRandomCard()
@@ -36,20 +37,40 @@ bool allArrayElementsAreTrue(bool elements[], int size)
 	return allTrue;
 }
 
-int getPickCountNeededForFourSuits(bool verbose)
+int getPickCountNeededForFourSuits(bool verbose, bool replacement)
 {
-	bool suitsPicked[]{ false, false, false, false }; // spades, hearts, diamonds, clubs
-	int count{ 0 };
+	int* randomizedDeck{ nullptr }; // don't initialize if never used
 
+	// if no replacement, get a shuffled array of cards
+	if (!replacement)
+	{
+		randomizedDeck = new int[52];
+		// fill deck
+		for (int i = 0; i < 52; i++)
+		{
+			randomizedDeck[i] = i;
+		}
+		// magic required for std::shuffle
+		std::random_device rd;
+		std::mt19937 g(rd());
+		std::shuffle(randomizedDeck, randomizedDeck + 52, g); // using memory addresses of array beginning and end
+	}
+
+	bool suitsPicked[4]{}; // spades, hearts, diamonds, clubs
+	int count{ 0 };
 	int card{};
-	Rank rank{};
 	Suit suit{};
 
-	
 	while (!allArrayElementsAreTrue(suitsPicked, 4))
 	{
-		card = pickRandomCard();
-		rank = getRank(card);
+		if (!replacement)
+		{
+			card = randomizedDeck[count];
+		}
+		else
+		{
+			card = pickRandomCard();
+		}
 		suit = getSuit(card);
 		count++;
 
@@ -87,6 +108,7 @@ int getPickCountNeededForFourSuits(bool verbose)
 
 		if (verbose)
 		{
+			Rank rank = getRank(card);
 			std::cout << Constants::RANKS[static_cast<int>(rank)]
 				<< " of "
 				<< Constants::SUITS[static_cast<int>(suit)]

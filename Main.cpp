@@ -7,11 +7,11 @@ int main()
 
 	//int pickCount = getPickCountNeededForFourSuits(false);
 	//std::cout << "Number of picks: " << pickCount  << '\n';
-	int iterations = 100000000;
+	int iterations = 100000;
 	int totalPickCount{};
 	for (int i = 0; i < iterations; i++)
 	{
-		totalPickCount += getPickCountNeededForFourSuits(false);
+		totalPickCount += getPickCountNeededForFourSuits(false, false);
 	}
 
 	std::cout << "Average: " << static_cast<double>(totalPickCount) / iterations << '\n';
