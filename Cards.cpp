@@ -1,6 +1,5 @@
 #include <cstdlib>
-#include <iostream>
-#include <random>
+#include <iostream>	
 #include "Cards.h"
 
 int pickRandomCard()
@@ -41,22 +40,7 @@ int getPickCountNeededForFourSuits(bool verbose, bool replacement)
 {
 	
 
-	int* randomizedDeck{ nullptr }; // don't initialize if never used
-
-	// if no replacement, get a shuffled array of cards
-	if (!replacement)
-	{
-		randomizedDeck = new int[Constants::CARD_COUNT];
-		// fill deck
-		for (int i = 0; i < Constants::CARD_COUNT; i++)
-		{
-			randomizedDeck[i] = i;
-		}
-		// magic required for std::shuffle
-		std::random_device rd;
-		std::mt19937 g(rd());
-		std::shuffle(randomizedDeck, randomizedDeck + Constants::CARD_COUNT, g); // using memory addresses of array beginning and end
-	}
+	bool pickedCards[Constants::CARD_COUNT]{};
 
 	bool suitsPicked[static_cast<int>(Suit::count)]{}; // 0->3: spades, hearts, diamonds, clubs
 	int count{ 0 };
@@ -65,14 +49,23 @@ int getPickCountNeededForFourSuits(bool verbose, bool replacement)
 
 	while (!allArrayElementsAreTrue(suitsPicked, static_cast<int>(Suit::count)))
 	{
+		
+		
+		
+
 		if (!replacement)
 		{
-			card = randomizedDeck[count];
-		}
+			do
+			{
+				card = pickRandomCard();
+			} while (pickedCards[card] == true);
+			pickedCards[card] = true;
+		} 
 		else
 		{
 			card = pickRandomCard();
 		}
+
 		suit = getSuit(card);
 		int intSuit = static_cast<int>(suit);
 		count++;
