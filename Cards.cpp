@@ -53,6 +53,15 @@ int getPickCountNeededForFourSuits(bool verbose)
 		suit = getSuit(card);
 		count++;
 
+		if (verbose)
+		{
+			std::cout << "Card " << count << ": "
+				<< Constants::RANKS[static_cast<int>(rank)]
+				<< " of "
+				<< Constants::SUITS[static_cast<int>(suit)]
+				<< '\n';
+		}
+
 		switch (suit)
 		{
 		case Suit::Spades:
@@ -85,11 +94,13 @@ int getPickCountNeededForFourSuits(bool verbose)
 			break;
 		}
 
-		std::cout << Constants::RANKS[static_cast<int>(rank)]
-			<< " of "
-			<< Constants::SUITS[static_cast<int>(suit)]
-			<< '\n';
-
+		if (!verbose)
+		{
+			std::cout << Constants::RANKS[static_cast<int>(rank)]
+				<< " of "
+				<< Constants::SUITS[static_cast<int>(suit)]
+				<< '\n';
+		}
 		
 	}
 
