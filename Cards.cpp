@@ -38,21 +38,15 @@ bool allArrayElementsAreTrue(bool elements[], int size)
 
 int getPickCountNeededForFourSuits(bool verbose, bool replacement)
 {
-	
-
 	bool pickedCards[Constants::CARD_COUNT]{};
-
 	bool suitsPicked[static_cast<int>(Suit::count)]{}; // 0->3: spades, hearts, diamonds, clubs
+
 	int count{ 0 };
 	int card{};
 	Suit suit{};
 
 	while (!allArrayElementsAreTrue(suitsPicked, static_cast<int>(Suit::count)))
 	{
-		
-		
-		
-
 		if (!replacement)
 		{
 			do
@@ -73,16 +67,18 @@ int getPickCountNeededForFourSuits(bool verbose, bool replacement)
 		if (!suitsPicked[intSuit])
 		{
 			suitsPicked[intSuit] = true;
+
+			if (verbose)
+			{
+				Rank rank = getRank(card);
+				std::cout << Constants::RANKS[static_cast<int>(rank)]
+					<< " of "
+					<< Constants::SUITS[intSuit]
+					<< '\n';
+			}
 		}
 
-		if (verbose)
-		{
-			Rank rank = getRank(card);
-			std::cout << Constants::RANKS[static_cast<int>(rank)]
-				<< " of "
-				<< Constants::SUITS[intSuit]
-				<< '\n';
-		}
+		
 		
 	}
 
